@@ -4,7 +4,7 @@ import requests
 app = Flask(__name__)
 
 # Example anime API base URL (replace with your chosen anime API)
-ANIME_API_BASE_URL = "https://api.jikan.moe/v3"
+ANIME_API_BASE_URL = "https://api.jikan.moe/v4"
 
 @app.route('/')
 def index():
@@ -17,7 +17,7 @@ def search_anime():
         return jsonify({'error': 'Anime name not provided'}), 400
     
     # Example: Searching anime using Jikan API
-    search_url = f"{ANIME_API_BASE_URL}/search/anime?q={anime_name}"
+    search_url = f"{ANIME_API_BASE_URL}//anime/{anime_name}/full"
     response = requests.get(search_url)
     if response.status_code == 200:
         anime_data = response.json().get('results', [])
